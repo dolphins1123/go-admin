@@ -1,10 +1,12 @@
 package router
 
 import (
-	"github.com/gin-gonic/gin"
-	_ "github.com/gin-gonic/gin"
 	"go-admin/pkg/jwtauth"
 	jwt "go-admin/pkg/jwtauth"
+
+	"github.com/gin-gonic/gin"
+	_ "github.com/gin-gonic/gin"
+
 )
 
 // 路由示例
@@ -25,7 +27,12 @@ func examplesNoCheckRoleRouter(r *gin.Engine) {
 	// 空接口防止v1定义无使用报错
 	v1.GET("/nilcheckrole", nil)
 
-	// {{无需认证路由自动补充在此处请勿删除}}
+	// {{无需认证路由自动补充在此处请勿删除}} 
+
+    registerArticleRouter(v1) 
+
+ 
+
 }
 
 // 需要认证的路由示例
@@ -35,5 +42,8 @@ func examplesCheckRoleRouter(r *gin.Engine, authMiddleware *jwtauth.GinJWTMiddle
 	// 空接口防止v1定义无使用报错
 	v1.GET("/checkrole", nil)
 
-	// {{认证路由自动补充在此处请勿删除}}
+	// {{认证路由自动补充在此处请勿删除}} 
+ registerDemoElementuiRouter(v1,authMiddleware) 
+
+ 	
 }
